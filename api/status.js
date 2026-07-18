@@ -9,22 +9,22 @@ export default async function handler(req, res) {
 
     try {
 
-        const data = await redis.get("poolclub-status");
+       const data = await redis.get("poolclub-status");
 
-        if (!data) {
+if (!data) {
 
-            return res.status(200).json({
-                success: true,
-                message: "No data available",
-                businessRunning: false
-            });
+    return res.status(200).json({
+        success: true,
+        message: "No data available",
+        businessRunning: false
+    });
 
-        }
+}
 
-        return res.status(200).json({
-            success: true,
-            ...data
-        });
+return res.status(200).json({
+    success: true,
+    ...data
+});
 
     } catch (error) {
 

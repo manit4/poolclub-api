@@ -18,7 +18,10 @@ export default async function handler(req, res) {
 
     try {
 
-        await redis.set("poolclub-status", req.body);
+        await redis.set(
+    "poolclub-status",
+    JSON.stringify(req.body)
+);
 
         return res.status(200).json({
             success: true,
