@@ -1,7 +1,8 @@
 {
   "name": "poolclub-api",
   "version": "1.0.0",
+  "type": "module",
   "dependencies": {
-    "mongodb": "^7.5.0"
+    "@upstash/redis": "^1.35.3"
   }
 }
