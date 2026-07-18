@@ -7,23 +7,22 @@ const redis = new Redis({
 
 export default async function handler(req, res) {
 
+    if (req.method !== "POST") {
+
+        return res.status(405).json({
+            success: false,
+            message: "Method Not Allowed"
+        });
+
+    }
+
     try {
 
-        const data = await redis.get("poolclub-status");
-
-        if (!data) {
-
-            return res.status(200).json({
-                success: true,
-                message: "No data available",
-                businessRunning: false
-            });
-
-        }
+        await redis.set("poolclub-status", req.body);
 
         return res.status(200).json({
             success: true,
-            ...data
+            message: "Status synced successfully"
         });
 
     } catch (error) {
